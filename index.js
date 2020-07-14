@@ -31,8 +31,8 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     return axios.get(url)
     .then((result) => {
       console.log(result.data.weather[0].description);
-      agent.add(`The current weather condition in ${city} is: `);
-      agent.add(result.data.weather[0].description+ ` and the temerature is`);
+      agent.add();
+      agent.add(result.data.weather[0].description+` is the current weather condition in ${city}.`);
     }).catch((err)=>{
       agent.add(`No city ${city} found`);
     });
