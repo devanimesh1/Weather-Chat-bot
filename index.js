@@ -32,7 +32,7 @@ exports.dialogflowFirebaseFulfillment = functions.https.onRequest((request, resp
     .then((result) => {
       console.log(result.data.weather[0].description);
       agent.add();
-      agent.add(result.data.weather[0].description+` is the current weather condition in ${city}.`);
+      agent.add(`the current weather condition in ${city} is` + result.data.weather[0].description+ ` And the temperature is `+ result.data.main.temp);
     }).catch((err)=>{
       agent.add(`No city ${city} found`);
     });
